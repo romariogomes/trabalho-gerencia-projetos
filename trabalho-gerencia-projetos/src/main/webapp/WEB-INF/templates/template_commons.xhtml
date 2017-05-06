@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>TGP Game</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet name="bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="bootstrap/css/bootstrap-theme.css" />
+	<h:outputStylesheet name="styles/layout.css" />
+	<h:outputStylesheet name="styles/utilsStyle.css" />
+	<link rel="shortcut icon" href="#{resource['images/logo.jpg']}"
+		type="image/x-icon" />
+</h:head>
+<h:body>
+	<h:form>
+		<div id="cabecalho-site" class="cabecalho">
+			<i class="fa fa-sign-in fa-2x icone-menu"></i>
+			<a href="" class="texto-menu">Login</a> 
+			
+			<i class="fa fa-user fa-2x icone-menu"></i>
+			<a href="" class="texto-menu">Registrar-se</a>
+		</div>
+
+		<br />
+
+		<div id="conteudo">
+			<ui:insert name="conteudo">
+				<!-- Conteúdo da Tela -->
+			</ui:insert>
+		</div>
+
+		<div id="lateral"></div>
+
+		<div id="rodape"></div>
+	</h:form>
+</h:body>
+</html>
