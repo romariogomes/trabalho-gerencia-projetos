@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -16,6 +18,17 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.uff.domain.AbstractEntity;
 import br.com.uff.domain.enums.Status;
+
+/*
+ *Queries utilizadas pelo UsuarioDAO 
+ */
+@NamedQueries({
+	@NamedQuery(name = "buscaUsuarioByEmail", 
+			query = "select u from Usuario u where u.email=:email"),
+	@NamedQuery(name = "buscaUsuarioLogin", 
+			query = "select u from Usuario u where (u.email=:email and u.senha=:senha "
+					+ "and u.status=:status)")
+})
 
 /**
  * 
@@ -33,6 +46,10 @@ public class Usuario extends AbstractEntity implements Serializable {
 	@Column(name = "USUA_PK_ID")
 	private Integer id;
 
+	@Column(name = "USUA_TX_NOME", nullable = false)
+	@NotEmpty
+	private String nome;
+
 	@Column(name = "USUA_TX_EMAIL", nullable = false)
 	@NotEmpty
 	private String email;
@@ -45,9 +62,14 @@ public class Usuario extends AbstractEntity implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@NotNull
 	private Status status;
+	
+	@Column(name = "USUA_CK_IS_ADMIN", nullable = false)
+	@NotNull
+	private boolean isAdmin;
 
-	public Usuario(String email, String senha, Status status) {
+	public Usuario(String nome, String email, String senha, Status status) {
 		super();
+		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 		this.status = status;
@@ -65,6 +87,14 @@ public class Usuario extends AbstractEntity implements Serializable {
 	@Override
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getEmail() {

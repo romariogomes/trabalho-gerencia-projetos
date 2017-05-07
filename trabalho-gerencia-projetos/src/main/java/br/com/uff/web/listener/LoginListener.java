@@ -6,6 +6,8 @@ import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 
+import br.com.uff.domain.entity.Usuario;
+
 public class LoginListener implements PhaseListener {
 
 	private static final long serialVersionUID = 1L;
@@ -13,23 +15,24 @@ public class LoginListener implements PhaseListener {
 	/**
 	 * 
 	 * Método que será responsável pela verificacão assim que toda página xhtml
-	 * for chamada. 
+	 * for chamada.
 	 * 
 	 */
 	@Override
 	public void afterPhase(PhaseEvent event) {
 		FacesContext context = event.getFacesContext();
 		String nomePagina = context.getViewRoot().getViewId();
-		
-		if (nomePagina.equals("/index.xhtml")) {
-			return;
-		}
-		
-		Object usuarioLogado = context.getExternalContext().getSessionMap().get("usuarioLogado");
+
+		Usuario usuarioLogado = (Usuario) context.getExternalContext().getSessionMap().get("usuarioLogado");
 		if (usuarioLogado != null) {
 			return;
 		}
 		
+		if (nomePagina.equals("/index.xhtml") || nomePagina.equals("/login.xhtml")) {
+			return;
+		}
+
+
 		NavigationHandler handler = context.getApplication().getNavigationHandler();
 		handler.handleNavigation(context, null, "index?faces-redirect=true");
 		context.renderResponse();
