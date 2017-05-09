@@ -11,21 +11,13 @@
 			<div class="login-default">
 				<fieldset>
 					<legend>Login</legend>
-					<h:inputText class="input-email" placeholder="Email" 
-					required="true" alt="Email" value="#{loginController.usuario.email}">
-						<f:passThroughAttribute name="placeholder" value="Email" />
-						<f:passThroughAttribute name="type" value="email" />
-					</h:inputText>
-					<br /> <br />
-					<h:inputSecret class="input-senha" alt="Senha" value="#{loginController.usuario.senha}"
-					placeholder="Senha" required="true">
-						<f:passThroughAttribute name="placeholder" value="Senha" />
-					</h:inputSecret>
-					<br /> <br /> 
+					
+					<ui:include src="/WEB-INF/templates/formulario-usuario.xhtml" />					
+					
 					<span> 
 						<h:commandButton value="Logar" action="#{loginController.efetuaLogin()}"
 							styleClass="btn waves-effect waves-light" /> 
-						<h:commandButton value="Esqueci minha Senha"
+						<h:commandButton value="Esqueci minha Senha" disabled="true"
 							styleClass="btn waves-effect waves-light" />
 					</span>
 				</fieldset>

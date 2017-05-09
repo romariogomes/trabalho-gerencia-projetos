@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/template_commons.xhtml">
+
+	<ui:define name="conteudo">
+		<div class="area-usuario-admin">
+			<fieldset>
+				<legend>Cadastro de Funcionários</legend>
+				<h:inputText required="true" alt="Nome"
+					value="#{usuarioAdminController.funcionario.nome}">
+					<f:passThroughAttribute name="placeholder" value="Nome" />
+				</h:inputText>
+
+				<h:inputText required="true" alt="Conhecimento"
+					value="#{usuarioAdminController.funcionario.conhecimento.descricaoSkill}">
+					<f:passThroughAttribute name="placeholder" value="Conhecimento" />
+				</h:inputText>
+
+				<br />
+
+				<h:inputText required="true" alt="Nível de Conhecimento"
+					value="#{usuarioAdminController.funcionario.conhecimento.nivel}">
+					<f:passThroughAttribute name="placeholder"
+						value="Nível de Conhecimento" />
+				</h:inputText>
+
+				<h:inputText required="true" alt="Tempo de empresa"
+					value="#{usuarioAdminController.funcionario.tempoEmpresa}">
+					<f:passThroughAttribute name="placeholder" value="Tempo de Empresa" />
+				</h:inputText>
+
+				<br />
+
+				<h:inputText required="true" alt="Valor Hora/Dia"
+					value="#{usuarioAdminController.funcionario.valorDia}">
+					<f:passThroughAttribute name="placeholder" value="Valor Hora/Dia" />
+				</h:inputText>
+
+				<br /> 
+				<span> 
+					<h:commandButton value="Salvar"
+						action="#{usuarioAdminController.salvarFuncionario()}"
+						styleClass="btn waves-effect waves-light btn-salvar" />
+				</span>
+			</fieldset>
+			<h3>Tabela de Funcionários</h3>
+			<p:dataTable var="funcionario"
+				value="#{usuarioAdminController.funcionarios}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{funcionario.nome}" />
+				</p:column>
+
+				<p:column headerText="Conhecimento">
+					<h:outputText value="#{funcionario.conhecimento.descricaoSkill}" />
+				</p:column>
+
+				<p:column headerText="Nível Conhecimento">
+					<h:outputText value="#{funcionario.conhecimento.nivel}" />
+				</p:column>
+
+				<p:column headerText="Tempo de Empresa (anos)">
+					<h:outputText value="#{funcionario.tempoEmpresa}" />
+				</p:column>
+
+				<p:column headerText="Valor Hora/Dia (R$)">
+					<h:outputText value="R$ #{funcionario.valorDia}" />
+				</p:column>
+
+
+			</p:dataTable>
+		</div>
+	</ui:define>
+</ui:composition>

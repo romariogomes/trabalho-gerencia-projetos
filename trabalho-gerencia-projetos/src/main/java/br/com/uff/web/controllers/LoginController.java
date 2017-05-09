@@ -39,15 +39,23 @@ public class LoginController extends BaseController {
 			FacesContext context = FacesContext.getCurrentInstance();
 			if (usuarioLogado != null) {
 				context.getExternalContext().getSessionMap().put("usuarioLogado", usuarioLogado);
-				return "homeLogada?faces-redirect=true";
+				return redirecionaByRole(usuarioLogado);
 			}
 			return null;
 		} catch (DAOException exception) {
 			log.error(exception.getMessage(), exception);
-		} 
-		
+		}
+
 		return "index?faces-redirect=true";
 
+	}
+
+	private String redirecionaByRole(Usuario usuarioLogado) {
+		if (!usuarioLogado.isAdmin()) {
+			return "homeLogada?faces-redirect=true";
+		} else {
+			return "usuario-admin-logado?faces-redirect=true";
+		}
 	}
 
 	/**

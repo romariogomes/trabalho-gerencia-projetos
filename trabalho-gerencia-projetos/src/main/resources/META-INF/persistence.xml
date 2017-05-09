@@ -9,6 +9,8 @@
 
 		<!-- Aqui são listadas todas as entidades -->
 		<class>br.com.uff.domain.entity.Usuario</class>
+		<class>br.com.uff.domain.entity.Conhecimento</class>
+		<class>br.com.uff.domain.entity.Funcionario</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>

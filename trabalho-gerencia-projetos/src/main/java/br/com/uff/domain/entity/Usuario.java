@@ -22,13 +22,9 @@ import br.com.uff.domain.enums.Status;
 /*
  *Queries utilizadas pelo UsuarioDAO 
  */
-@NamedQueries({
-	@NamedQuery(name = "buscaUsuarioByEmail", 
-			query = "select u from Usuario u where u.email=:email"),
-	@NamedQuery(name = "buscaUsuarioLogin", 
-			query = "select u from Usuario u where (u.email=:email and u.senha=:senha "
-					+ "and u.status=:status)")
-})
+@NamedQueries({ @NamedQuery(name = "buscaUsuarioByEmail", query = "select u from Usuario u where u.email=:email"),
+		@NamedQuery(name = "buscaUsuarioLogin", query = "select u from Usuario u where (u.email=:email and u.senha=:senha "
+				+ "and u.status=:status)") })
 
 /**
  * 
@@ -50,7 +46,7 @@ public class Usuario extends AbstractEntity implements Serializable {
 	@NotEmpty
 	private String nome;
 
-	@Column(name = "USUA_TX_EMAIL", nullable = false)
+	@Column(name = "USUA_TX_EMAIL", nullable = false, unique = true)
 	@NotEmpty
 	private String email;
 
@@ -62,7 +58,7 @@ public class Usuario extends AbstractEntity implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@NotNull
 	private Status status;
-	
+
 	@Column(name = "USUA_CK_IS_ADMIN", nullable = false)
 	@NotNull
 	private boolean isAdmin;
@@ -119,6 +115,14 @@ public class Usuario extends AbstractEntity implements Serializable {
 
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 }

@@ -34,10 +34,39 @@ body {
 	text-decoration: underline;
 }
 
+.texto-menu.disabled {
+	color: #BEBEBE;
+}
+
+.icone-menu.disabled {
+	color: #BEBEBE;
+}
+
 /* Área principal
 ---------------------------------------------------------------------------------------------------*/
 .jogo-info {
 	
+}
+
+.area-usuario-admin {
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	padding: 50px;
+}
+
+.area-usuario-admin fieldset {
+	text-align: left;
+    padding: 20px 20px 20px 20px;
+}
+
+.area-usuario-admin fieldset input[type="text"]{
+	width: 35% !important;
+	margin-right: 30px;
+}
+
+.area-usuario-admin .btn-salvar, .btn-limpar {
+	margin-right: 1em;
 }
 
 .area-login {
@@ -71,10 +100,5 @@ body {
 	color: #FFF;
 	width: 100%;
 	height: 100px;
+	position: relative;
 }
-
-
-
-
-
-

@@ -39,9 +39,17 @@
 							Bem vindo, #{mainController.usuarioLogado.nome}
 						</a>
 					</span>
+					<span>
+						<i class="fa fa-edit fa-2x icone-menu #{not usuarioAdminController.usuarioLogado.admin ? 'disabled' : ''}"/>
+						<h:commandLink action="dados-usuario.xhtml" 
+							styleClass="texto-menu #{not usuarioAdminController.usuarioLogado.admin ? 'disabled' : ''}"
+							value="Cadastro de Funcionários "
+							disabled="#{not usuarioAdminController.usuarioLogado.admin}">
+						</h:commandLink>
+					</span>
 					<span class="flt-right">
 						<i class="fa fa-sign-out fa-2x icone-menu"></i>
-						<h:commandLink action="#{loginController.deslogar}" 
+						<h:commandLink action="#{loginController.deslogar()}" immediate="true" 
 							value="Deslogar" styleClass="texto-menu">
 						</h:commandLink> 
 					</span>

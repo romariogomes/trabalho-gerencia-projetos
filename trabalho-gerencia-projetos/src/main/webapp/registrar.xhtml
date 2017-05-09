@@ -19,23 +19,12 @@
 					
 					<br /> <br />
 					
-					<h:inputText class="input-email" placeholder="Email" 
-						alt="Email" value="#{usuarioController.usuario.email}">
-						<f:passThroughAttribute name="placeholder" value="Email" />
-						<f:passThroughAttribute name="type" value="email" />
-					</h:inputText>
-					
-					<br /> <br />
-					
-					<h:inputSecret value="#{usuarioController.usuario.senha}" styleClass="input-senha"
-						alt="Senha">
-						<f:passThroughAttribute name="placeholder" value="Senha" />
-					</h:inputSecret> 
+					<ui:include src="/WEB-INF/templates/formulario-usuario.xhtml" />	
 					
 					<span> 
 						<h:commandButton value="Confirmar" action="#{usuarioController.cadastraUsuario()}"
 							styleClass="btn waves-effect waves-light" /> 
-						<h:commandButton value="Solicitar Exclusão"
+						<h:commandButton value="Solicitar Exclusão" disabled="true"
 							styleClass="btn waves-effect waves-light" />
 					</span>
 				</fieldset>
