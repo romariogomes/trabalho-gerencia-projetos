@@ -27,11 +27,11 @@ public class LoginListener implements PhaseListener {
 		if (usuarioLogado != null) {
 			return;
 		}
-		
-		if (nomePagina.equals("/index.xhtml") || nomePagina.equals("/login.xhtml")) {
+
+		if (nomePagina.equals("/index.xhtml") || nomePagina.equals("/login.xhtml")
+				|| nomePagina.equals("/registrar.xhtml")) {
 			return;
 		}
-
 
 		NavigationHandler handler = context.getApplication().getNavigationHandler();
 		handler.handleNavigation(context, null, "index?faces-redirect=true");

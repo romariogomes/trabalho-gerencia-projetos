@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.uff.domain.entity.Usuario;
+import br.com.uff.domain.enums.Status;
 import br.com.uff.service.servicos.UsuarioService;
 import br.com.uff.web.BaseController;
 
@@ -16,26 +17,43 @@ public class UsuarioController extends BaseController {
 	private static final long serialVersionUID = 1L;
 
 	private Usuario usuario;
-	
+
 	@Inject
 	private UsuarioService usuarioService;
 
+	//TODO Refazer esse PostConstruct
 	@PostConstruct
 	public void postConstruct() {
 		buscaUsuarioAtual();
 		usuario = usuarioLogado;
-		usuarioService.buscaUsuario(usuario);
+		if (usuario != null) {
+			usuarioService.buscaUsuario(usuario);
+		} else{
+			usuario = new Usuario();
+		}
 	}
-	
+
+	//TODO Apresentar uma msg na tela e redirecionar para a pagina logado
 	/**
 	 * 
-	 * Grava Usuário
+	 * Cadastra novo usuário
 	 * 
-	 * @param usuario
 	 * @return
 	 */
-	public Usuario cadastraUsuario() {
-		return usuarioService.gravarUsuario(usuario);
+	public String cadastraUsuario() {
+		usuario.setStatus(Status.A);
+		usuarioService.gravarUsuario(usuario);
+		return "index?faces-redirect=true";
+	}
+
+	/**
+	 * 
+	 * Atualiza usuário
+	 * 
+	 * @return
+	 */
+	public Usuario atualizaUsuario() {
+		return usuarioService.atualizaUsuario(usuario);
 	}
 
 	public Usuario getUsuario() {

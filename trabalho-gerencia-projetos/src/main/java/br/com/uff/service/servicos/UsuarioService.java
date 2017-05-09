@@ -23,6 +23,10 @@ public class UsuarioService {
 		usuario.setSenha(Utils.encriptaSenha(usuario.getSenha()));
 		return usuarioRepository.gravar(usuario);
 	}
+	
+	public Usuario atualizaUsuario(Usuario usuario) {
+		return usuarioRepository.merge(usuario);
+	}
 
 	public void excluirUsuario(Usuario usuario) {
 		usuarioRepository.excluir(usuario);
