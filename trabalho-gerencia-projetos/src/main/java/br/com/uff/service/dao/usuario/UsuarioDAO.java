@@ -8,8 +8,8 @@ import javax.persistence.TypedQuery;
 import org.slf4j.Logger;
 
 import br.com.uff.domain.entity.Usuario;
-import br.com.uff.domain.enums.Status;
 import br.com.uff.domain.repository.UsuarioRepository;
+import br.com.uff.domain.valueobject.enums.Status;
 import br.com.uff.service.dao.BaseDAO;
 import br.com.uff.service.dao.NamedQueryParams;
 

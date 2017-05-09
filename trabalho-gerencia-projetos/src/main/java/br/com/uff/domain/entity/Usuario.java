@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.uff.domain.AbstractEntity;
-import br.com.uff.domain.enums.Status;
+import br.com.uff.domain.valueobject.enums.Status;
 
 /*
  *Queries utilizadas pelo UsuarioDAO 

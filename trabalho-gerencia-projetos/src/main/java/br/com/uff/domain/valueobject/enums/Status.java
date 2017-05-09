@@ -1,4 +1,4 @@
-package br.com.uff.domain.enums;
+package br.com.uff.domain.valueobject.enums;
 
 /**
  * 

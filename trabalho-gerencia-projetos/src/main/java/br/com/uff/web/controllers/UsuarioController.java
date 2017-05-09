@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.uff.domain.entity.Usuario;
-import br.com.uff.domain.enums.Status;
+import br.com.uff.domain.valueobject.enums.Status;
 import br.com.uff.service.servicos.UsuarioService;
 import br.com.uff.web.BaseController;
 
